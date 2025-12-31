@@ -1,0 +1,251 @@
+   body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            direction: ltr;
+        }
+        
+        #game-container {
+            position: relative;
+            width: 360px;
+            height: 640px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="360" height="640" viewBox="0 0 360 640"><rect width="360" height="640" fill="%2387CEEB"/><rect y="580" width="360" height="60" fill="%23A0522D"/><rect y="560" width="360" height="20" fill="%23228B22"/></svg>') repeat-x;
+            overflow: hidden;
+            border: 4px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        #bird {
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background: yellow;
+            border-radius: 50% 50% 50% 10%;
+            left: 60px;
+            top: 300px;
+            transition: transform 0.1s;
+        }
+        
+        #bird:before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            top: 5px;
+            right: 5px;
+        }
+        
+        #bird:after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: black;
+            border-radius: 50%;
+            top: 8px;
+            right: 8px;
+        }
+        
+        .pipe {
+            position: absolute;
+            width: 60px;
+            background: linear-gradient(to right, #228B22, #32CD32, #228B22);
+            border: 3px solid black;
+        }
+        
+        .obstacle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: red;
+            border-radius: 50%;
+            animation: rotate 2s infinite linear;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .coin {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: gold;
+            border-radius: 50%;
+            animation: shine 1s infinite alternate;
+            z-index: 10;
+        }
+        
+        @keyframes shine {
+            0% { box-shadow: 0 0 5px gold; }
+            100% { box-shadow: 0 0 15px gold; }
+        }
+        
+        #score-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        #level-display {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        #high-score {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: gold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        #life-display {
+            position: absolute;
+            top: 110px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: red;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        #start-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 100;
+        }
+        
+        #game-over {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 100;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        .difficulty {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .difficulty button {
+            margin: 0 5px;
+        }
+        
+        #power-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 100px;
+            height: 15px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        #power-level {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, red, yellow, green);
+            transition: width 0.1s;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        
+        .wing {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            background: orange;
+            border-radius: 50% 50% 0 50%;
+            top: 15px;
+            left: 0;
+            transform-origin: right center;
+            animation: flap 0.3s infinite alternate;
+        }
+        
+        @keyframes flap {
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
+        }
+        
+        .effect {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: dissolve 0.5s forwards;
+            pointer-events: none;
+        }
+        
+        @keyframes dissolve {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        
+        .pause-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }

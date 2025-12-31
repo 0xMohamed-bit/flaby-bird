@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة فلابي بيرد المعقدة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="bird">
+            <div class="wing"></div>
+        </div>
+        <div id="score-display">النقاط: 0</div>
+        <div id="level-display">المستوى: 1</div>
+        <div id="high-score">أعلى نتيجة: 0</div>
+        <div id="life-display">الأرواح: 3</div>
+        <div id="power-bar"><div id="power-level"></div></div>
+        <button class="pause-btn">توقف مؤقت</button>
+        
+        <div id="start-screen">
+            <h1>فلابي بيرد المعقدة</h1>
+            <p>اضغط على الشاشة أو مفتاح المسافة للقفز</p>
+            <div class="difficulty">
+                <button id="easy">سهل</button>
+                <button id="medium">متوسط</button>
+                <button id="hard">صعب</button>
+            </div>
+        </div>
+        
+        <div id="game-over">
+            <h1>انتهت اللعبة!</h1>
+            <p>النتيجة النهائية: <span id="final-score">0</span></p>
+            <button id="restart">إعادة اللعب</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
